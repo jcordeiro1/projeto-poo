@@ -16,6 +16,7 @@ public class PlanilhaExcel {
 
         if (numColunas < 3 || numColunas > MAX_COLUNAS) {
             System.out.println("Número de colunas inválido. Reinicie o programa.");
+            scanner.close();
             return;
         }
 
@@ -43,7 +44,9 @@ public class PlanilhaExcel {
             // Escreve os nomes das colunas
             for (int i = 0; i < numColunas; i++) {
                 csvWriter.append(colunas[i]);
-                if (i < numColunas - 1) csvWriter.append(",");
+                if (i < numColunas - 1) {
+                    csvWriter.append(","); // Adiciona vírgula entre as colunas
+                }
             }
             csvWriter.append("\n");
 
@@ -51,7 +54,9 @@ public class PlanilhaExcel {
             for (int i = 0; i < numLinhas; i++) {
                 for (int j = 0; j < numColunas; j++) {
                     csvWriter.append(dados[i][j]);
-                    if (j < numColunas - 1) csvWriter.append(",");
+                    if (j < numColunas - 1) {
+                        csvWriter.append(","); // Adiciona vírgula entre os dados
+                    }
                 }
                 csvWriter.append("\n");
             }
@@ -62,7 +67,6 @@ public class PlanilhaExcel {
             e.printStackTrace();
         }
 
-        scanner.close();
+        scanner.close(); // Fechar o scanner
     }
 }
-
